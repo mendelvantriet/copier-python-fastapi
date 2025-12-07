@@ -7,4 +7,6 @@ install:
 lock:
 	pip-compile -o requirements.txt pyproject.toml
 
-
+.PHONY: update
+update:
+	copier update --vcs-ref=$(tag) .

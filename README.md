@@ -11,18 +11,20 @@ pipx install copier
 To generate a project, use the `copier copy` command.
 
 ```commandline
-copier copy url/to/project/template/tag/ref path/to/destination
+copier copy --vcs-ref=v0.1.0 url/to/project/template path/to/destination
 ```
 
 If a template's tag ref is used in the `copy` command, 
-this tag will be in the `_src_path` variable in the generated `.copier-answers.yml` file.
+this tag will be in the `_commit` variable in the generated `.copier-answers.yml` file.
 Then it will be possible to update a project whenever the template has evolved.
 
 [More info](https://copier.readthedocs.io/en/stable/generating/)
 
+To update a project use the `copier update` command.
+
 ```commandline
 cd ~/projects/my_new_project
-copier update --vcs-ref=HEAD
+copier update --vcs-ref=v0.1.0 .
 ```
 
 [More info](https://copier.readthedocs.io/en/stable/updating/)
