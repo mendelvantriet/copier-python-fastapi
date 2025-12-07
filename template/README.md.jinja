@@ -3,3 +3,17 @@
 # {{ project_name }}
 
 {{ project_description }}
+
+## Dependencies
+
+Install dev dependencies
+
+```commandline
+pip install ".[dev]"
+```
+
+Fix dependency patch versions:
+
+```commandline
+pip-compile -o requirements.txt pyproject.toml
+```
