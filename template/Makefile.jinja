@@ -1,0 +1,28 @@
+.PHONY: install
+install:
+	pip install --require-virtualenv --upgrade pip
+	pip install --require-virtualenv ".[dev]"
+
+.PHONY: lock
+lock:
+	pip-compile -o requirements.txt pyproject.toml
+
+.PHONY: update
+update:
+	copier update --vcs-ref=$(tag) .
+
+.PHONY: generate
+generate:
+	docker run --rm \
+	--user $$(id -u):$$(id -g) \
+	-v ${PWD}:/local openapitools/openapi-generator-cli generate \
+	-i /local/openapi.yaml \
+	-g python-fastapi \
+	--package-name {{ project_name }} \
+	-o /local
+	mv src/{{ project_name }}/* {{ project_name }}/
+	rm -r src
+
+.PHONY: run
+run:
+	uvicorn {{ project_name }}.main:app --host 0.0.0.0 --port 8080

@@ -15,8 +15,3 @@ project_name:
 project_description:
   type: str
   help: Please provide a short description of your project
-
-module_name:
-  type: str
-  help: What is your Python module name?
-  default: main

@@ -1,0 +1,33 @@
+openapi: 3.0.1
+info:
+  title: {{ project_name }}
+  description: {{ project_description }}
+  version: 0.1.0
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /example:
+    get:
+      summary: Example endpoint
+      responses:
+        '200':
+          description: Some string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+
+components:
+  schemas:
+    ResponseData:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Some name

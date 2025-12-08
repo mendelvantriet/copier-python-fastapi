@@ -9,11 +9,23 @@
 Install dev dependencies
 
 ```commandline
-pip install ".[dev]"
+make install
 ```
 
 Fix dependency patch versions:
 
 ```commandline
-pip-compile -o requirements.txt pyproject.toml
+make lock
+```
+
+## Generate stubs
+
+```commandline
+make generate
+```
+
+## Usage
+
+```commandline
+make run
 ```
