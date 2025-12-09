@@ -1,7 +1,8 @@
 .PHONY: install
 install:
+	cp --update=none .env.example .env
 	pip install --require-virtualenv --upgrade pip
-	pip install --require-virtualenv ".[dev]"
+	pip install --require-virtualenv -e ".[dev]"
 
 .PHONY: lock
 lock:
@@ -25,4 +26,4 @@ generate:
 
 .PHONY: run
 run:
-	uvicorn {{ project_name }}.main:app --host 0.0.0.0 --port 8080
+	uvicorn {{ project_name }}.main:app --host 0.0.0.0 --port 8080 --reload
