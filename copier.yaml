@@ -15,3 +15,21 @@ project_name:
 project_description:
   type: str
   help: Please provide a short description of your project
+
+sqlalchemy:
+  type: bool
+  help: Does the project require an orm framework (sqlalchemy)?
+  default: yes
+
+storage_backend:
+  type: str
+  help: Choose a storage backend
+  choices:
+    - sqlite
+  when: "{{ sqlalchemy }}"
+
+sqlite_path:
+  type: str
+  help: The sqlite database location
+  default: sqlite.db
+  when: "{{ storage_backend == 'sqlite' }}"

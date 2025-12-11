@@ -1,0 +1,12 @@
+import os
+
+
+# General settings
+LOGLEVEL = os.environ.get("GENERAL_LOGLEVEL", "INFO").upper()
+
+# Storage settings
+{% if storage_backend == "sqlite" -%}
+SQLITE_PATH = os.environ.get("STORAGE_SQLITE_PATH", "sqlite.db")
+{% endif %}
+
+# Application specific settings

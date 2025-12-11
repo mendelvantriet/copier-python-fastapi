@@ -11,6 +11,8 @@ dynamic = ["version"]
 dependencies = [
     "fastapi ~= 0.123.10",
     "pydantic ~= 2.12.5",
+    {% if sqlalchemy %}"sqlalchemy ~= 2.0.45",{% endif %}
+    {% if storage_backend == "sqlite" %}"sqlalchemy[aiosqlite] ~= 2.0.45",{% endif %}
     "uvicorn ~= 0.38.0",
 ]
 

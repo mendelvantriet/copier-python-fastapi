@@ -1,0 +1,12 @@
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.orm import sessionmaker
+
+from {{ project_name }} import config
+
+
+{% if storage_backend == "sqlite" -%}
+engine = create_async_engine(f"sqlite+aiosqlite://{config.SQLITE_PATH}")
+{% endif -%}
+
+Session = sessionmaker(bind=engine)
+session = Session()
