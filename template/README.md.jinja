@@ -18,7 +18,18 @@ Fix dependency patch versions:
 make lock
 ```
 
-## Generate stubs
+{% if storage %}
+## Database
+
+This project uses alembic for database migrations.
+To upgrade the database to the latest version:
+
+```commandline
+make migrate
+```
+
+{% endif %}
+## Generate API stubs
 
 ```commandline
 make generate

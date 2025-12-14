@@ -16,9 +16,9 @@ project_description:
   type: str
   help: Please provide a short description of your project
 
-sqlalchemy:
+storage:
   type: bool
-  help: Does the project require an orm framework (sqlalchemy)?
+  help: Does the project require a storage backend (with sqlalchemy)?
   default: yes
 
 storage_backend:
@@ -26,10 +26,10 @@ storage_backend:
   help: Choose a storage backend
   choices:
     - sqlite
-  when: "{{ sqlalchemy }}"
+  when: "{{ storage }}"
 
-sqlite_path:
+database_url:
   type: str
   help: The sqlite database location
-  default: sqlite.db
+  default: sqlite+aiosqlite:///sqlite.db
   when: "{{ storage_backend == 'sqlite' }}"

@@ -6,7 +6,7 @@ LOGLEVEL = os.environ.get("GENERAL_LOGLEVEL", "INFO").upper()
 
 # Storage settings
 {% if storage_backend == "sqlite" -%}
-SQLITE_PATH = os.environ.get("STORAGE_SQLITE_PATH", "sqlite.db")
+DATABASE_URL = os.environ.get("STORAGE_DATABASE_URL")
 {% endif %}
 
 # Application specific settings

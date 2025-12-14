@@ -5,7 +5,7 @@ from {{ project_name }} import config
 
 
 {% if storage_backend == "sqlite" -%}
-engine = create_async_engine(f"sqlite+aiosqlite://{config.SQLITE_PATH}")
+engine = create_async_engine(f"{config.DATABASE_URL}")
 {% endif -%}
 
 Session = sessionmaker(bind=engine)
