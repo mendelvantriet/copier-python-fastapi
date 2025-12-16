@@ -1,0 +1,15 @@
+# Specify shared data across all 'output' destinations
+# Note that the copier.yml defaults are used whenever the key is not set in this file
+[defaults]
+project_name = "project"
+project_description = "Description..."
+storage_backend = "sqlite"
+
+_extra_tasks = [
+    "pre-commit run --all-files",
+    "SETUPTOOLS_SCM_PRETEND_VERSION_FOR_project=v1 pip install --require-virtualenv -e '.[dev]'",
+    "mypy ./project",
+]
+
+# Parametrize each output with a relative path and optionally any values to override
+[output.".ctt/defaults"]

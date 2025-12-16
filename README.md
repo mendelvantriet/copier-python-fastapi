@@ -28,3 +28,11 @@ copier update --vcs-ref=v0.1.0 .
 ```
 
 [More info](https://copier.readthedocs.io/en/stable/updating/)
+
+## Testing
+
+The template can be tested with [`copier_template_tester`](https://pypi.org/project/copier_template_tester/)
+
+```commandline
+make test
+```
