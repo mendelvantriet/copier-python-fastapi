@@ -3,6 +3,7 @@ install:
 	cp --update=none .env.example .env
 	pip install --require-virtualenv --upgrade pip
 	pip install --require-virtualenv -e ".[dev]"
+	pre-commit install
 
 .PHONY: lock
 lock:
